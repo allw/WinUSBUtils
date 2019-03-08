@@ -1,7 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Allan Wiese</Authors>
+    <Company />
+    <Description>Util classes for working with USB devices in windows applications.</Description>
+    <PackageTags>usb usb-devices windows-usb-utils</PackageTags>
+    <RepositoryUrl>https://github.com/allw/WinUSBUtils.git</RepositoryUrl>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>
