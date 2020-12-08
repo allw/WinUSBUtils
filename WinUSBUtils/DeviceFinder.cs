@@ -19,6 +19,45 @@ namespace WinUSBUtils
             ProductID = productID;
         }
 
+        public IEnumerable<USBDeviceInfo> GetAll()
+        {
+            List<USBDeviceInfo> result = new List<USBDeviceInfo>();
+
+            try
+            {
+                var deviceIDpattern = $@"USB%%VID_{VendorID}&PID_{ProductID}%";
+                var query = $@"SELECT * FROM Win32_PnPEntity WHERE PNPDeviceID LIKE ""{deviceIDpattern}""";
+                using (var searcher = new ManagementObjectSearcher(query))
+                {
+                    ManagementObjectCollection collection;
+
+                    collection = searcher.Get();
+
+                    foreach (var device in collection)
+                    {
+                        try
+                        {
+                            result.Add(ExtractDevice(device));
+                        }
+                        catch (EmptySerialNumberException)
+                        {
+                            continue;
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+
+            return result;
+        }
+
         public IEnumerable<USBDeviceInfo> FindBySerialNumberPrefix(string serialNumberPrefix)
         {
             List<USBDeviceInfo> result = new List<USBDeviceInfo>();

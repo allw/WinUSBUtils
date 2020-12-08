@@ -8,6 +8,7 @@
     <PackageTags>usb usb-devices windows-usb-utils</PackageTags>
     <RepositoryUrl>https://github.com/allw/WinUSBUtils.git</RepositoryUrl>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
